@@ -106,6 +106,9 @@ export default function HomePage() {
           <div className="message" onClick={() => handleFieldClick('tajrobi')}>
             {selectedGrade} تجربی
           </div>
+          {/* <div className="message" onClick={() => handleFieldClick('tajrobi')}>
+            {selectedGrade} تربیت بدنی
+          </div> */}
         </div>
       )}
 

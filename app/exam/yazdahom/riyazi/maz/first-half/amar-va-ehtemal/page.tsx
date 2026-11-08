@@ -25,75 +25,47 @@ export default function AmarVaEhtemalChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
+  // ساختار بر اساس فهرست کتاب آمار و احتمال (۲) یازدهم ریاضی
   const chapters: Chapter[] = [
     {
       id: 1,
-      name: 'فصل اول: مبانی آمار',
-      icon: '📊',
+      name: 'فصل اول: آشنایی با مبانی ریاضیات',
+      icon: '📐',
       color: '#2196F3',
       examSlug: 'chapter1-exam',
-      examName: 'آزمون جامع فصل اول: مبانی آمار',
+      examName: 'آزمون جامع فصل اول: آشنایی با مبانی ریاضیات',
       examQuestionCount: 25,
       lessons: [
-        { id: 1, name: 'درس ۱-۱: جامعه و نمونه', description: 'مفهوم جامعه، نمونه، نمونه‌گیری و کاربردها', questionCount: 10, slug: 'lesson1' },
-        { id: 2, name: 'درس ۱-۲: متغیرهای آماری', description: 'متغیرهای کمی و کیفی، متغیرهای گسسته و پیوسته', questionCount: 10, slug: 'lesson2' },
-        { id: 3, name: 'درس ۱-۳: جدول توزیع فراوانی', description: 'جدول فراوانی، فراوانی نسبی و درصدی، فراوانی تجمعی', questionCount: 12, slug: 'lesson3' },
+        { id: 1, name: 'درس ۱-۱: آشنایی با منطق ریاضی', description: 'گزاره، جدول ارزش گزاره‌ها، ترکیب گزاره‌ها (فصلی، عطفی، شرطی، دوشرطی)، سورها و نقض گزاره‌های سوری', questionCount: 15, slug: 'logic' },
+        { id: 2, name: 'درس ۱-۲: مجموعه‌ها', description: 'زیرمجموعه، تعداد زیرمجموعه‌های یک مجموعه، افزار یک مجموعه، روش عضویت‌گیری دلخواه، دو مجموعه مساوی', questionCount: 10, slug: 'sets' },
+        { id: 3, name: 'درس ۱-۳: قوانین اعمال بین مجموعه‌ها', description: 'قوانین دمورگان، ضرب دکارتی بین دو مجموعه', questionCount: 8, slug: 'set-operations' },
       ]
     },
     {
       id: 2,
-      name: 'فصل دوم: نمایش داده‌ها',
-      icon: '📈',
-      color: '#4CAF50',
+      name: 'فصل دوم: احتمال',
+      icon: '🎲',
+      color: '#FF9800',
       examSlug: 'chapter2-exam',
-      examName: 'آزمون جامع فصل دوم: نمایش داده‌ها',
+      examName: 'آزمون جامع فصل دوم: احتمال',
       examQuestionCount: 28,
       lessons: [
-        { id: 4, name: 'درس ۲-۱: نمودارهای آماری', description: 'نمودار میله‌ای، دایره‌ای، ستونی و خطی', questionCount: 12, slug: 'lesson4' },
-        { id: 5, name: 'درس ۲-۲: نمودار جعبه‌ای (باکس پلات)', description: 'رسم و تفسیر نمودار جعبه‌ای، چارک‌ها و دامنه چارکی', questionCount: 10, slug: 'lesson5' },
-        { id: 6, name: 'درس ۲-۳: نمودار ساقه و برگ', description: 'رسم و تفسیر نمودار ساقه و برگ، مرتب‌سازی داده‌ها', questionCount: 8, slug: 'lesson6' },
+        { id: 4, name: 'درس ۲-۱: مبانی احتمال', description: 'آمار و احتمال به چه کار می‌آید؟، ترجمه زبان گزاره‌ها به زبان مجموعه‌ها، تشخیص فضای نمونه، اصول احتمال', questionCount: 12, slug: 'probability-basics' },
+        { id: 5, name: 'درس ۲-۲: احتمال غیرهم‌شأنس', description: 'محاسبه احتمال پیشامدها در فضای نمونه غیرهم‌شأنس (مانند پرتاب تاس ناسالم)', questionCount: 8, slug: 'non-uniform-probability' },
+        { id: 6, name: 'درس ۲-۳: احتمال شرطی', description: 'کاهش فضای نمونه، احتمال شرطی چگونه محاسبه می‌شود؟', questionCount: 10, slug: 'conditional-probability' },
       ]
     },
-    {
-      id: 3,
-      name: 'فصل سوم: شاخص‌های مرکزی و پراکندگی',
-      icon: '📐',
-      color: '#FF9800',
-      examSlug: 'chapter3-exam',
-      examName: 'آزمون جامع فصل سوم: شاخص‌های مرکزی و پراکندگی',
-      examQuestionCount: 30,
-      lessons: [
-        { id: 7, name: 'درس ۳-۱: میانگین و میانه', description: 'محاسبه میانگین و میانه، ویژگی‌ها و کاربردها', questionCount: 12, slug: 'lesson7' },
-        { id: 8, name: 'درس ۳-۲: مد و چارک‌ها', description: 'محاسبه مد، چارک اول، دوم و سوم، دامنه تغییرات', questionCount: 10, slug: 'lesson8' },
-        { id: 9, name: 'درس ۳-۳: واریانس و انحراف معیار', description: 'محاسبه واریانس و انحراف معیار، ویژگی‌ها و کاربردها', questionCount: 15, slug: 'lesson9' },
-        { id: 10, name: 'درس ۳-۴: ضریب تغییرات', description: 'محاسبه ضریب تغییرات، مقایسه پراکندگی دو جامعه', questionCount: 8, slug: 'lesson10' },
-      ]
-    },
-    {
-      id: 4,
-      name: 'فصل چهارم: مبانی احتمال',
-      icon: '🎲',
-      color: '#F44336',
-      examSlug: 'chapter4-exam',
-      examName: 'آزمون جامع فصل چهارم: مبانی احتمال',
-      examQuestionCount: 32,
-      lessons: [
-        { id: 11, name: 'درس ۴-۱: فضای نمونه و پیشامد', description: 'فضای نمونه، پیشامد، پیشامد ساده و مرکب', questionCount: 12, slug: 'lesson11' },
-        { id: 12, name: 'درس ۴-۲: احتمال کلاسیک', description: 'محاسبه احتمال، قضایای احتمال، احتمال رخ ندادن', questionCount: 15, slug: 'lesson12' },
-        { id: 13, name: 'درس ۴-۳: احتمال شرطی', description: 'احتمال شرطی، پیشامدهای مستقل و وابسته', questionCount: 10, slug: 'lesson13' },
-        { id: 14, name: 'درس ۴-۴: قانون جمع و ضرب احتمال', description: 'قانون جمع، قانون ضرب، پیشامدهای ناسازگار', questionCount: 10, slug: 'lesson14' },
-      ]
-    },
+    
     {
       id: 5,
-      name: '🏆 آزمون جامع کل کتاب آمار و احتمال (2)',
+      name: '🏆 آزمون جامع کل کتاب آمار و احتمال (۲)',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب آمار و احتمال (2)',
+      examName: 'آزمون جامع کل کتاب آمار و احتمال (۲)',
       examQuestionCount: 50,
       lessons: [
-        { id: 15, name: '📚 کل دروس کتاب آمار و احتمال (2)', description: 'شامل تمام مباحث: مبانی آمار، نمایش داده‌ها، شاخص‌های مرکزی و پراکندگی، مبانی احتمال', questionCount: 50, slug: 'final-exam' },
+        { id: 13, name: '📚 کل دروس کتاب آمار و احتمال (۲)', description: 'شامل تمام مباحث: مبانی ریاضیات، احتمال، آمار توصیفی و آمار استنباطی', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
@@ -116,7 +88,7 @@ export default function AmarVaEhtemalChaptersPage() {
         <button onClick={() => router.push('/exam/yazdahom/riyazi/maz/first-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        <h1 style={styles.title}>📊 آمار و احتمال (2) - پایه یازدهم ریاضی </h1>
+        <h1 style={styles.title}>📊 آمار و احتمال (۲) - پایه یازدهم ریاضی </h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 

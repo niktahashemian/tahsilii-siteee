@@ -32,24 +32,6 @@ const SquareFourChargesSVG = () => (
   </svg>
 );
 
-const RightTriangle163SVG = () => (
-  <svg viewBox="0 0 500 400" style={{ maxWidth: '100%', height: 'auto' }}>
-    <line x1="50" y1="350" x2="450" y2="350" stroke="#999" strokeWidth="1" />
-    <line x1="50" y1="350" x2="50" y2="50" stroke="#999" strokeWidth="1" />
-    <polygon points="100,100 400,300 100,300" fill="none" stroke="#1565C0" strokeWidth="2" />
-    <polyline points="100,280 120,280 120,300" fill="none" stroke="#1565C0" strokeWidth="2" />
-    <circle cx="100" cy="100" r="18" fill="#E91E63" />
-    <text x="100" y="107" fontSize="14" fontWeight="bold" fill="white" textAnchor="middle">q₁</text>
-    <circle cx="400" cy="300" r="18" fill="#4CAF50" />
-    <text x="400" y="307" fontSize="14" fontWeight="bold" fill="white" textAnchor="middle">q₂</text>
-    <circle cx="100" cy="300" r="18" fill="#2196F3" />
-    <text x="100" y="307" fontSize="14" fontWeight="bold" fill="white" textAnchor="middle">q₃</text>
-    <text x="240" y="320" fontSize="13" fill="#333" textAnchor="middle">۶ cm</text>
-    <text x="75" y="210" fontSize="13" fill="#333" textAnchor="middle">۸ cm</text>
-    <text x="270" y="190" fontSize="13" fill="#333" textAnchor="middle">۱۰ cm</text>
-  </svg>
-);
-
 const FieldDistanceSVG = () => (
   <svg viewBox="0 0 600 350" style={{ maxWidth: '100%', height: 'auto' }}>
     <line x1="60" y1="200" x2="540" y2="200" stroke="#333" strokeWidth="2" />
@@ -102,7 +84,6 @@ const Physics2ElectricField = () => {
       id: 154,
       section: "سوال ۱۵۴ - صفحه ۲۸ PDF",
       text: "کره رسانایی به شعاع ۱۰ cm بار الکتریکی ۲۰ μC دارد. در فاصله ۳۰ cm از مرکز کره میدان الکتریکی آن چند نیوتون بر کولن است؟ (k = ۹×۱۰⁹ N·m²/C²)",
-      ImageComponent: SphereSVG,
       options: ["۲×۱۰⁶", "۶×۱۰⁶", "۱۸×۱۰⁶", "۲۰×۱۰⁶"],
       correctIndex: 3,
       answer: "برای فاصله‌های بزرگ‌تر از شعاع کره، میدان مانند بار نقطه‌ای در مرکز محاسبه می‌شود:\nE = kq/r²\nE = (۹×۱۰⁹ × ۲۰×۱۰⁻⁶) ÷ (۰/۳)²\nE = ۱۸۰×۱۰³ ÷ ۰/۰۹ = ۲×۱۰⁶ N/C\n✅ گزینه 4 صحیح است."
@@ -112,7 +93,6 @@ const Physics2ElectricField = () => {
       id: 161,
       section: "سوال ۱۶۱ - صفحه ۳۰ PDF",
       text: "میدان الکتریکی در فاصله ۶۰ سانتی‌متری از بار q برابر با ۳۲ N/C است. چند سانتی‌متر دیگر از بار فوق دور شویم تا میدان الکتریکی ۱۴ واحد SI کاهش یابد؟",
-      ImageComponent: FieldDistanceSVG,
       options: ["۱۰", "۲۰", "۳۰", "۴۰"],
       correctIndex: 1,
       answer: "کاهش ۱۴ واحد SI یعنی:\nE₂ = ۳۲ - ۱۴ = ۱۸ N/C\n\nE₁/E₂ = (r₂/r₁)²\n۳۲/۱۸ = (r₂/۶۰)²\n۱۶/۹ = (r₂/۶۰)²\n۴/۳ = r₂/۶۰ ⇒ r₂ = ۸۰ cm\n\nΔr = ۸۰ - ۶۰ = ۲۰ cm\n✅ گزینه ۲ صحیح است."
@@ -122,7 +102,9 @@ const Physics2ElectricField = () => {
       id: 163,
       section: "سوال ۱۶۳ - صفحه ۳۰ PDF",
       text: "سه بار الکتریکی مطابق شکل زیر روی رأس‌های یک مثلث قائم‌الزاویه قرار گرفته‌اند. اگر برآیند نیروهای الکتریکی وارد بر بار q₁ به صورت F = (-۰/۲)i + (۱/۴)j باشد، میدان الکتریکی بار q₁ در محل بار q₂ در SI کدام است؟ (k = ۹×۱۰⁹ N·m²/C²)",
-      ImageComponent: RightTriangle163SVG,
+      // کامپوننت حذف شد و جایگزین آن تگ image و imageAlt شد
+      image: "/img/q163.png", 
+      imageAlt: "مثلث قائم‌الزاویه با بارهای q1، q2 و q3",
       options: ["(√۲i - √۲j)×۱۰⁵", "(۳/۵i - ۳/۵j)×۱۰⁵", "(-√۲i + √۲j)×۱۰⁵", "(-۳/۵i + ۳/۵j)×۱۰⁵"],
       correctIndex: 1,
       answer: "با محاسبه نیروها و تقسیم بر بار q₂:\nE = F/q\nبا توجه به مقادیر داده شده:\nE = (-√۲i + √۲j)×۱۰⁵ N/C\n✅ گزینه 2 صحیح است."
@@ -139,23 +121,23 @@ const Physics2ElectricField = () => {
     },
     // ===== سوال ۱۷۶ - صفحه ۳۲ PDF =====
     {
-  id: 176,
-  section: "سوال ۱۷۶ - صفحه ۳۲ PDF",
-  text: "بار نقطه‌ای q = +۵ μC بر باری هم‌اندازه خودش که در فاصله r از آن قرار دارد، نیروی F = ۱۰ N را وارد می‌کند. بزرگی میدان الکتریکی ناشی از بار q در فاصله ۵r از این بار، چند نیوتون بر کولن است؟",
-  ImageComponent: null,
-  options: ["۸×۱۰⁴", "۴×۱۰⁵", "۲×۱۰⁶", "۱۰⁷"],
-  correctIndex: 0,
-  answer: "F = kq²/r² ⇒ ۱۰ = ۹×۱۰⁹ × (۵×۱۰⁻⁶)²/r²\n⇒ r² = ۹×۱۰⁹ × ۲۵×۱۰⁻¹² ÷ ۱۰ = ۲۲/۵×۱۰⁻²\n⇒ r = ۰/۱۵ m\n\nE = kq/(۵r)² = ۹×۱۰⁹ × ۵×۱۰⁻⁶ ÷ (۰/۷۵)²\n= ۴۵×۱۰³ ÷ ۰/۵۶۲۵ = ۸×۱۰⁴ N/C\n\n✅ گزینه ۱ صحیح است."
-},
+      id: 176,
+      section: "سوال ۱۷۶ - صفحه ۳۲ PDF",
+      text: "بار نقطه‌ای q = +۵ μC بر باری هم‌اندازه خودش که در فاصله r از آن قرار دارد، نیروی F = ۱۰ N را وارد می‌کند. بزرگی میدان الکتریکی ناشی از بار q در فاصله ۵r از این بار، چند نیوتون بر کولن است؟",
+      ImageComponent: null,
+      options: ["۸×۱۰⁴", "۴×۱۰⁵", "۲×۱۰⁶", "۱۰⁷"],
+      correctIndex: 0,
+      answer: "F = kq²/r² ⇒ ۱۰ = ۹×۱۰⁹ × (۵×۱۰⁻⁶)²/r²\n⇒ r² = ۹×۱۰⁹ × ۲۵×۱۰⁻¹² ÷ ۱۰ = ۲۲/۵×۱۰⁻²\n⇒ r = ۰/۱۵ m\n\nE = kq/(۵r)² = ۹×۱۰⁹ × ۵×۱۰⁻⁶ ÷ (۰/۷۵)²\n= ۴۵×۱۰³ ÷ ۰/۵۶۲۵ = ۸×۱۰⁴ N/C\n\n✅ گزینه ۱ صحیح است."
+    },
     // ===== سوال ۱۸۷ - صفحه ۳۳ PDF =====
     {
       id: 187,
       section: "سوال ۱۸۷ - صفحه ۳۳ PDF",
       text: "دو بار نقطه‌ای q₁ = ۴q و q₂ = ۹q در فاصله r از هم واقع هستند. میدان الکتریکی ناشی از دو بار در فاصله d₁ از بار q₁ برابر با صفر است. اگر فاصله دو بار از هم دو برابر شود، میدان الکتریکی برآیند در فاصله d₂ از بار q₂ برابر با صفر می‌شود. d₂ چند برابر d₁ است؟",
       ImageComponent: null,
-      options: ["۳", "۲", "۴", "۳/۲"],
-      correctIndex: 0,
-      answer: "حالت اول: E₁ = E₂\nk×۴q/d₁² = k×۹q/(r-d₁)²\n⇒ ۲/d₁ = ۳/(r-d₁)\n⇒ ۲r - ۲d₁ = ۳d₁ ⇒ ۵d₁ = ۲r ⇒ d₁ = ۲r/۵\n\nحالت دوم: E₁ = E₂\nk×۴q/(۲r-d₂)² = k×۹q/d₂²\n⇒ ۲/(۲r-d₂) = ۳/d₂\n⇒ ۲d₂ = ۳(۲r-d₂) = ۶r - ۳d₂\n⇒ ۵d₂ = ۶r ⇒ d₂ = ۶r/۵\n\nd₂/d₁ = (۶r/۵) ÷ (۲r/۵) = ۳\n✅ گزینه 1 صحیح است."
+      options: ["۳", "۴", "۲", "۳/۲"],
+      correctIndex: 2,
+      answer: "حالت اول: E₁ = E₂\nk×۴q/d₁² = k×۹q/(r-d₁)²\n⇒ ۲/d₁ = ۳/(r-d₁)\n⇒ ۲r - ۲d₁ = ۳d₁ ⇒ ۵d₁ = ۲r ⇒ d₁ = ۲r/۵\n\nحالت دوم: E₁ = E₂\nk×۴q/(۲r-d₂)² = k×۹q/d₂²\n⇒ ۲/(۲r-d₂) = ۳/d₂\n⇒ ۲d₂ = ۳(۲r-d₂) = ۶r - ۳d₂\n⇒ ۵d₂ = ۶r ⇒ d₂ = ۶r/۵\n\nd₂/d₁ = (۶r/۵) ÷ (۲r/۵) = ۳\n✅ گزینه ۳ صحیح است."
     },
     // ===== سوال ۱۸۸ - صفحه ۳۳ PDF =====
     {
@@ -175,6 +157,13 @@ const Physics2ElectricField = () => {
   const [isScoreCalculated, setIsScoreCalculated] = useState(false);
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isTimeUp, setIsTimeUp] = useState(false);
+  
+  // برای مدیریت خطای تصویر (اختیاری، اما خیلی به کارتان می‌آید)
+  const [imageErrors, setImageErrors] = useState<{[key: number]: boolean}>({});
+
+  const handleImageError = (id: number) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }));
+  };
 
   const calculateScore = useCallback(() => {
     if (isCalculatedRef.current) return;
@@ -237,7 +226,6 @@ const Physics2ElectricField = () => {
 
       <div style={{ width: '100%' }}>
         {questions.map((q, index) => {
-          const ImgComp = q.ImageComponent;
           return (
             <div key={q.id} style={{ marginBottom: '25px', backgroundColor: '#ffffff', padding: '20px 25px', borderRadius: '8px', border: '1px solid #e9ecef', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
               <div style={{ display: 'inline-block', backgroundColor: '#e3f2fd', color: '#1565C0', padding: '4px 14px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold', marginBottom: '12px' }}>{q.section}</div>
@@ -245,7 +233,26 @@ const Physics2ElectricField = () => {
                 <span style={{ display: 'inline-block', backgroundColor: '#1565C0', color: 'white', width: '30px', height: '30px', textAlign: 'center', lineHeight: '30px', borderRadius: '50%', fontSize: '14px', marginLeft: '15px', flexShrink: 0 }}>{index + 1}</span>
                 <span>{q.text}</span>
               </div>
-              {ImgComp && (<div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', backgroundColor: '#f8f9fa', padding: '15px', borderRadius: '10px', border: '1px solid #e9ecef' }}><ImgComp /></div>)}
+
+              {/* ======= جایگزینی برای تصویر سوال ======= */}
+              {q.image && (
+                <div style={{ marginBottom: '20px', display: 'flex', justifyContent: 'center', backgroundColor: '#f8f9fa', padding: '15px', borderRadius: '10px', border: '1px solid #e9ecef' }}>
+                  {imageErrors[q.id] ? (
+                    <div style={{ textAlign: 'center', color: '#6c757d', padding: '20px' }}>
+                      <span style={{ fontSize: '30px' }}>🖼️</span>
+                      <p style={{ margin: '5px 0 0 0', fontSize: '14px' }}>تصویر یافت نشد (مسیر: {q.image})</p>
+                    </div>
+                  ) : (
+                    <img 
+                      src={q.image} 
+                      alt={q.imageAlt} 
+                      onError={() => handleImageError(q.id)}
+                      style={{ maxWidth: '100%', maxHeight: '350px', objectFit: 'contain' }} 
+                    />
+                  )}
+                </div>
+              )}
+
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 30px', marginRight: '20px' }}>
                 {q.options.map((opt, idx) => {
                   const isSelected = selectedAnswers[q.id] === idx;
@@ -288,13 +295,23 @@ const Physics2ElectricField = () => {
             {questions.map((q, index) => {
               const userAnswer = selectedAnswers[q.id];
               const isCorrect = userAnswer === q.correctIndex;
-              const ImgComp = q.ImageComponent;
               return (
                 <div key={q.id} style={{ marginBottom: '35px', borderBottom: '1px dashed #ced4da', paddingBottom: '25px' }}>
                   <div style={{ fontSize: '16px', lineHeight: '2' }}>
                     <span style={{ fontWeight: 'bold', color: '#1565C0', backgroundColor: '#e3f2fd', padding: '5px 15px', borderRadius: '20px', display: 'inline-block', marginBottom: '10px' }}>{q.section}</span>
                     <br />
-                    {ImgComp && (<div style={{ marginBottom: '15px', display: 'flex', justifyContent: 'center', backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '8px' }}><ImgComp /></div>)}
+                    
+                    {/* ======= تصویر در پاسخنامه ======= */}
+                    {q.image && (
+                      <div style={{ marginBottom: '15px', display: 'flex', justifyContent: 'center', backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '8px' }}>
+                        {imageErrors[q.id] ? (
+                          <p style={{ fontSize: '14px', color: '#6c757d' }}>تصویر یافت نشد</p>
+                        ) : (
+                          <img src={q.image} alt={q.imageAlt} onError={() => handleImageError(q.id)} style={{ maxWidth: '100%', maxHeight: '250px', objectFit: 'contain' }} />
+                        )}
+                      </div>
+                    )}
+
                     <span style={{ fontWeight: 'bold', color: '#28a745' }}>✅ پاسخ صحیح:</span> <span>{q.options[q.correctIndex]}</span>
                     <br />
                     {userAnswer !== undefined && (<span><span style={{ fontWeight: 'bold', color: isCorrect ? '#28a745' : '#dc3545' }}>{isCorrect ? '✔️ صحیح' : '❌ نادرست'}</span><span style={{ fontSize: '14px', color: '#666', marginRight: '10px' }}>(انتخاب شما: {String.fromCharCode(65 + userAnswer)})</span><br /></span>)}

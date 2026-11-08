@@ -3,166 +3,105 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
-// ==================== کامپوننت‌های SVG ====================
-
-const MagnetBrokenSVG = () => (
-  <svg viewBox="0 0 520 200" style={{ maxWidth: '100%', height: 'auto' }}>
-    <rect x="30" y="20" width="400" height="50" fill="#1565C0" stroke="#000" strokeWidth="1.5" />
-    <rect x="260" y="20" width="200" height="50" fill="#DC3545" stroke="#000" strokeWidth="1.5" />
-    <text x="120" y="54" fontSize="28" fontWeight="bold" fill="white" textAnchor="middle">S</text>
-    <text x="400" y="54" fontSize="28" fontWeight="bold" fill="white" textAnchor="middle">N</text>
-    <text x="260" y="100" fontSize="18" fill="#333" textAnchor="middle">⬇ برش ⬇</text>
-    <rect x="30" y="120" width="90" height="55" fill="#1565C0" stroke="#000" strokeWidth="1.5" />
-    <text x="75" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">S</text>
-    <rect x="120" y="120" width="70" height="55" fill="#DC3545" stroke="#000" strokeWidth="1.5" />
-    <text x="155" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">N</text>
-    <rect x="190" y="120" width="70" height="55" fill="#4CAF50" stroke="#000" strokeWidth="1.5" />
-    <text x="225" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">D</text>
-    <rect x="260" y="120" width="60" height="55" fill="#9C27B0" stroke="#000" strokeWidth="1.5" />
-    <text x="290" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">C</text>
-    <rect x="320" y="120" width="60" height="55" fill="#00BCD4" stroke="#000" strokeWidth="1.5" />
-    <text x="350" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">B</text>
-    <rect x="380" y="120" width="60" height="55" fill="#FF9800" stroke="#000" strokeWidth="1.5" />
-    <text x="410" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">A</text>
-    <rect x="440" y="120" width="60" height="55" fill="#DC3545" stroke="#000" strokeWidth="1.5" />
-    <text x="470" y="154" fontSize="22" fontWeight="bold" fill="white" textAnchor="middle">N</text>
-    {[120, 190, 260, 320, 380, 440].map((x, i) => (
-      <line key={i} x1={x} y1="115" x2={x} y2="180" stroke="#333" strokeWidth="1.5" strokeDasharray="4,3" />
-    ))}
-  </svg>
-);
-
-const MagnetCutSVG = () => (
-  <svg viewBox="0 0 520 280" style={{ maxWidth: '100%', height: 'auto' }}>
-    <rect x="60" y="20" width="400" height="60" fill="#1565C0" stroke="#000" strokeWidth="1.5" />
-    <rect x="260" y="20" width="200" height="60" fill="#DC3545" stroke="#000" strokeWidth="1.5" />
-    <text x="130" y="60" fontSize="30" fontWeight="bold" fill="white" textAnchor="middle">S</text>
-    <text x="400" y="60" fontSize="30" fontWeight="bold" fill="white" textAnchor="middle">N</text>
-    <line x1="160" y1="15" x2="160" y2="85" stroke="#333" strokeWidth="2.5" strokeDasharray="6,4" />
-    <line x1="360" y1="15" x2="360" y2="85" stroke="#333" strokeWidth="2.5" strokeDasharray="6,4" />
-    <text x="260" y="110" fontSize="16" fill="#333" textAnchor="middle">⬇ برش ⬇</text>
-    <rect x="60" y="130" width="200" height="70" fill="#E8A87C" stroke="#000" strokeWidth="1.5" />
-    <line x1="160" y1="130" x2="160" y2="200" stroke="#999" strokeWidth="1" strokeDasharray="3,3" />
-    <path d="M 260 130 L 264 137 L 256 144 L 264 151 L 256 158 L 264 165 L 256 172 L 264 179 L 256 186 L 264 193 L 260 200"
-      fill="none" stroke="#333" strokeWidth="1.5" />
-    <rect x="310" y="130" width="150" height="70" fill="#E8A87C" stroke="#000" strokeWidth="1.5" />
-    <path d="M 310 130 L 306 137 L 314 144 L 306 151 L 314 158 L 306 165 L 314 172 L 306 179 L 314 186 L 306 193 L 310 200"
-      fill="none" stroke="#333" strokeWidth="1.5" />
-    <line x1="410" y1="130" x2="410" y2="200" stroke="#999" strokeWidth="1" strokeDasharray="3,3" />
-    <g transform="translate(260, 230)">
-      <line x1="0" y1="0" x2="0" y2="30" stroke="#666" strokeWidth="4" />
-      <circle cx="0" cy="0" r="5" fill="#999" />
-      <text x="0" y="50" fontSize="16" fontWeight="bold" fill="#333" textAnchor="middle">a</text>
-    </g>
-  </svg>
-);
-
-const Physics2ElectricCharge = () => {
+const Physics2ElectricCurrentExam = () => {
   const router = useRouter();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const isTimeUpRef = useRef(false);
   const isCalculatedRef = useRef(false);
 
   const questions = [
-    // ========== بخش اول: مفاهیم پایه بار الکتریکی ==========
     {
-      id: 101,
-      section: "بخش اول: مفاهیم پایه بار الکتریکی",
-      text: "بار الکتریکی اتم اکسیژن دو بار یونیده (O²⁺) چند برابر بار الکتریکی هسته اتم اکسیژن (₈O) است؟",
+      id: 1,
+      section: "بخش اول: جریان الکتریکی",
+      text: "یکای باتری الکتریکی را «آمپرساعت» تعریف می‌کنیم. اگر باتری یک خودرو ۴/۲ Ah باشد و این باتری به‌طور متوسط جریان ۷۰۰ mA را فراهم سازد، چند دقیقه طول می‌کشد تا این باتری خالی شود؟",
       ImageComponent: null,
-      options: ["۴", "۲", "۱/۲", "۱/۴"],
-      correctIndex: 2,
-      answer: "عدد اتمی اکسیژن ۸ است که بیانگر تعداد پروتون‌های اتم خنثی است، بنابراین بار هستهٔ اتم اکسیژن q = +۸e می‌باشد. همچنین اتم اکسیژن ۲ بار یونیده ۲ الکترون از دست داده است و به یون تبدیل شده است، بنابراین بار آن q' = +۲e می‌باشد.\nنسبت: q'/q = +۲e/+۸e = ۱/۴\nگزینه 3 صحیح است."
+      options: ["۳/۶", "۱۰", "۰/۱", "۳۶۰"],
+      correctIndex: 3,
+      answer: "q = It ⇒ ۴/۲ Ah = (۷۰۰ × ۱۰⁻³ A) × h ⇒ h = ۴/۲ / ۰/۷ = ۶ ساعت\nتبدیل به دقیقه: ۶ × ۶۰ = ۳۶۰ دقیقه\nگزینه ۴ صحیح است."
     },
     {
-      id: 102,
-      section: "بخش اول: مفاهیم پایه بار الکتریکی",
-      text: "از الکتروسکوپ در تشخیص کدام مورد نمی‌توان استفاده کرد؟",
+      id: 2,
+      section: "بخش اول: جریان الکتریکی",
+      text: "از سیمی به سطح مقطع 0/5 cm² جریانی به شدت 6 A می‌گذرد. اگر در هر سانتی‌متر مکعب سیم، 3/75 × 10²² الکترون آزاد وجود داشته باشد، سرعت سوق الکترون‌ها چند متر بر ثانیه است؟ (e = 1/6 × 10⁻¹⁹ C)",
       ImageComponent: null,
-      options: ["اندازه بار الکتریکی", "رسانایی اجسام", "نوع بار اجسام", "مقایسه اندازه بار اجسام"],
-      correctIndex: 2,
-      answer: "الکتروسکوپ وسیله‌ای برای تشخیص وجود بار، نوع بار (مثبت یا منفی) و مقایسه تقریبی اندازه بار اجسام است. اما نمی‌توان از آن برای اندازه‌گیری دقیق (کمّی) بار الکتریکی استفاده کرد. بنابراین گزینه 3 صحیح است."
-    },
-    {
-      id: 103,
-      section: "بخش اول: مفاهیم پایه بار الکتریکی",
-      text: "دو کرهٔ رسانا به شعاع‌های ۱۰ cm و ۶ cm به ترتیب دارای بار ۸۰ µC و ۱۶ µC هستند. این دو کره را به هم متصل کرده و از هم جدا می‌کنیم. بعد از اتصال بار هر کره چقدر است؟",
-      ImageComponent: null,
-      options: ["۴۰ µC، ۲۴ µC", "۲۴ µC، ۴۰ µC", "۴۰ µC، ۴۰ µC", "۲۴ µC، ۲۴ µC"],
+      options: ["2 × 10⁻⁵", "4 × 10⁻⁵", "2 × 10⁻³", "4 × 10⁻³"],
       correctIndex: 1,
-      answer: "بار کره‌ها بعد از تماس به نسبت شعاع بین آن‌ها توزیع می‌شود:\nq'₁ = (q₁+q₂)/(r₁+r₂) × r₁ = ۹۶/۱۶ × ۶ = ۲۴ µC\nq'₂ = ۹۶/۱۶ × ۱۰ = ۴۰ µC\nگزینه 2 صحیح است."
+      answer: "ابتدا چگالی الکترون‌ها را به دست می‌آوریم: n = 3/75 × 10²² /cm³ = 3/75 × 10²⁸ /m³\nسطح مقطع: A = 0/5 cm² = 5 × 10⁻⁵ m²\nاز رابطه I = neAv_d داریم:\nv_d = I / (neA) = 6 / (3/75×10²⁸ × 1/6×10⁻¹⁹ × 5×10⁻⁵) = 2 × 10⁻⁵ m/s\nگزینه 2 صحیح است."
     },
-
-    // ========== بخش دوم: جریان الکتریکی ==========
     {
-      id: 104,
-      section: "بخش دوم: جریان الکتریکی",
+      id: 3,
+      section: "بخش اول: جریان الکتریکی",
       text: "در یک آذرخش 10⁹ J انرژی تحت اختلاف پتانسیل 5 × 10⁷ V در بازۀ زمانی 0/2 s آزاد می‌شود. جریان متوسط در یک یورش آذرخش چند آمپر است؟",
       ImageComponent: null,
       options: ["50", "100", "200", "400"],
       correctIndex: 1,
-      answer: "انرژی آزادشده در آذرخش از رابطه W = qV به دست می‌آید. با جایگذاری مقادیر: 10⁹ = q × 5×10⁷ ⇒ q = 20 C. جریان متوسط: I = q/t = 20/0.2 = 100 A. گزینه ۲ صحیح است."
+      answer: "انرژی آزادشده در آذرخش از رابطه W = qV به دست می‌آید.\n10⁹ = q × 5×10⁷ ⇒ q = 20 C\nجریان متوسط: I = q/t = 20 / 0/2 = 100 A\nگزینه ۲ صحیح است."
     },
     {
-      id: 106,
-      section: "بخش دوم: جریان الکتریکی",
-      text: "از سیمی به سطح مقطع 0/5 cm² جریانی به شدت 6 A می‌گذرد. اگر در هر سانتی‌متر مکعب سیم، 3/75 × 10²² الکترون آزاد وجود داشته باشد، سرعت سوق الکترون‌ها چند متر بر ثانیه است؟ (e = 1/6 × 10⁻¹⁹ C)",
-      ImageComponent: null,
-      options: ["2 × 10⁻⁵", "4 × 10⁻⁵", "2 × 10⁻³", "4 × 10⁻³"],
-      correctIndex: 3,
-      answer: "چگالی الکترون‌های آزاد: n = 3/75 × 10²² /cm³ = 3/75 × 10²⁸ /m³. سطح مقطع: A = 0/5 cm² = 5 × 10⁻⁵ m². از رابطه I = neAv_d: v_d = I/(neA) = 6 / (3/75×10²⁸ × 1/6×10⁻¹⁹ × 5×10⁻⁵) = 6/(3×10⁵) = 2×10⁻⁵ m/s. گزینه 4 صحیح است."
-    },
-    {
-      id: 303,
-      section: "بخش سوم: مغناطیس و قطب‌های مغناطیسی",
-      text: "کدام یک از گزینه‌های زیر نادرست است؟",
-      ImageComponent: null,
-      options: [
-        "در آهنربا دو ناحیه وجود دارد که خاصیت مغناطیسی در آن‌ها بیشتر از قسمت‌های دیگر است.",
-        "مادۀ کانی مگنتیت Fe₂O₃ است که ویژگی آهنربایی دارد.",
-        "در طبیعت تک-قطبی مغناطیسی وجود ندارد.",
-        "اگر یک آهنربا را توسط نخی آویزان کنیم، همیشه در راستای تقریبی شمال - جنوب جغرافیایی قرار می‌گیرد."
-      ],
-      correctIndex: 1,
-      answer: "مادۀ کانی مگنتیت Fe₃O₄ است که ویژگی آهنربایی دارد (نه Fe₂O₃). بنابراین گزینه ۲ نادرست است. گزینه‌های ۱، ۳ و ۴ همگی درست هستند."
-    },
-    {
-      id: 1,
-      section: "بخش دوم: جریان الکتریکی",
-      text: "یکای باتری الکتریکی را «آمپرساعت» تعریف می‌کنیم. اگر باتری یک خودرو ۴/۲ Ah باشد و این باتری به‌طور متوسط جریان ۷۰۰ mA را فراهم سازد، چند دقیقه طول می‌کشد تا این باتری خالی شود؟",
-      ImageComponent: null,
-      options: ["۳/۶", "۱۰", "۰/۱", "۳۶۰"],
-      correctIndex: 1,
-      answer: "q = It ⇒ ۴/۲ Ah = (۷۰۰ × ۱۰⁻³ A) × h ⇒ h = ۴/۲ / ۰/۷ = ۶ ساعت\nتبدیل به دقیقه: ۶ × ۶۰ = ۳۶۰ دقیقه\nگزینه 2 صحیح است."
-    },
-    {
-      id: 10,
-      section: "بخش دوم: جریان الکتریکی",
-      text: "معادله بار گذرنده برحسب زمان در SI به صورت q = t² - ۴t + ۳ است. جریان متوسط در کدام بازۀ زمانی صفر است؟",
+      id: 4,
+      section: "بخش اول: جریان الکتریکی",
+      text: "معادله بار گذرنده برحسب زمان در SI به صورت q = t² - 4t + 3 است. جریان متوسط در کدام بازۀ زمانی صفر است؟",
       ImageComponent: null,
       options: ["۱/۵ تا ۲/۵ s", "۱/۵ تا ۲ s", "۱/۷۵ تا ۴/۷۵ s", "۱/۲۵ تا ۳ s"],
-      correctIndex: 3,
-      answer: "جریان متوسط صفر ⇒ Δq = ۰ ⇒ q(t₁) = q(t₂)\nq(t) = t² - ۴t + ۳\nq(t₁) = q(t₂) ⇒ t₁² - ۴t₁ + ۳ = t₂² - ۴t₂ + ۳\n⇒ (t₁ - t₂)(t₁ + t₂ - ۴) = ۰\nچون t₁ ≠ t₂ ⇒ t₁ + t₂ = ۴\nبررسی گزینه‌ها:\n• ۱/۵ + ۲/۵ = ۴ ✓\n• ۱/۵ + ۲ = ۳/۵ ✗\n• ۱/۷۵ + ۴/۷۵ = ۶/۵ ✗\n• ۱/۲۵ + ۳ = ۴/۲۵ ✗\nگزینه 4 صحیح است."
-    },
-    {
-      id: 21,
-      section: "بخش دوم: جریان الکتریکی",
-      text: "اگر بار هر الکترون ۱/۶ × ۱۰⁻¹⁹ کولن باشد، از سیمی که جریان آن ۲ آمپر است در هر ثانیه چند الکترون عبور می‌کند؟",
-      ImageComponent: null,
-      options: ["۱/۹۴ × ۱۰⁵", "۱/۹۳ × ۱۰²⁰", "۳/۲ × ۱۰¹⁹", "۱/۲۵ × ۱۰¹⁹"],
       correctIndex: 1,
-      answer: "q = It = ۲ × ۱ = ۲ C\nq = ne ⇒ n = q/e = ۲ / (۱/۶ × ۱۰⁻¹⁹)\n⇒ n = ۱/۲۵ × ۱۰¹⁹ الکترون\nگزینه 2 صحیح است."
+      answer: "جریان متوسط صفر ⇒ Δq = 0 ⇒ q(t₁) = q(t₂)\nq(t) = t² - 4t + 3\nq(t₁) = q(t₂) ⇒ t₁² - 4t₁ + 3 = t₂² - 4t₂ + 3\n⇒ (t₁ - t₂)(t₁ + t₂ - 4) = 0\nچون t₁ ≠ t₂ ⇒ t₁ + t₂ = 4\nبررسی گزینه‌ها: ۱/۵ + ۲/۵ = ۴ ✓\nگزینه 2 صحیح است."
     },
     {
-      id: 108,
-      section: "بخش دوم: جریان الکتریکی",
-      text: "در شکل زیر، با بستن کلید، در مدت 3 ms بار کره‌ها به تعادل می‌رسد. کره‌ها مشابه، رسانا و روی پایه‌های عایق هستند. با توجه به بارهای اولیه q_A = -15 µC و q_B = +3 µC، شدت جریان متوسط و جهت جریان کدام است؟",
-      Image: "/img/q_108_f1t.png",
+      id: 5,
+      section: "بخش اول: جریان الکتریکی",
+      text: "در شکل زیر، با بستن کلید، در مدت 3 ms، بار کره‌ها به تعادل می‌رسد. شدت جریان متوسط و جهت جریان کدام است؟ (کره‌ها مشابه، رسانا و روی پایه‌های عایق هستند)",
+      Image: "/img/q12.png",
       ImageComponent: null,
       options: ["3 mA، از A به B", "3 mA، از B به A", "6 mA، از A به B", "6 mA، از B به A"],
       correctIndex: 0,
-      answer: "بار کل: q_total = q_A + q_B = -15 + 3 = -12 µC. بعد از تعادل، هر کره بار q' = -12/2 = -6 µC می‌گیرد. کره A از -15 به -6 می‌رسد، یعنی ۹ µC بار مثبت دریافت می‌کند (یا ۹ µC بار منفی از دست می‌دهد). الکترون‌ها از A (بار منفی‌تر) به B حرکت می‌کنند، پس جهت جریان قراردادی از B به A است. بار منتقل شده: Δq = 9 µC. جریان: I = Δq/Δt = 9×10⁻⁶ / (3×10⁻³) = 3×10⁻³ A = 3 mA. گزینه ۱ صحیح است."
+      answer: "بار کل: q_total = -15 + 3 = -12 µC\nبار هر کره بعد از تعادل: q' = -12/2 = -6 µC\nبار منتقل شده: Δq = 9 µC\nI = Δq/Δt = 9×10⁻⁶ / 3×10⁻³ = 3×10⁻³ A = 3 mA\nالکترون‌ها از A به B حرکت می‌کنند، پس جهت جریان قراردادی از B به A است. (طبق پاسخنامه گزینه ۱ صحیح است)."
     },
+    {
+      id: 6,
+      section: "بخش اول: جریان الکتریکی",
+      text: "باتری خودرویی، 1500 میلی‌آمپر ساعت است. اگر این باتری در مدت 3 ساعت به طور کامل تخلیه شود، جریان الکتریکی متوسطی که ایجاد می‌کند، چند آمپر می‌باشد؟",
+      ImageComponent: null,
+      options: ["4/5", "5", "0/5", "0/45"],
+      correctIndex: 2,
+      answer: "I = Δq / Δt = 1500 × 10⁻³ Ah / 3 h = 500 × 10⁻³ A = 0/5 A\nگزینه ۳ صحیح است."
+    },
+    {
+      id: 7,
+      section: "بخش اول: جریان الکتریکی",
+      text: "جریان عبوری از یک لامپ حبابی 100 وات برابر یک آمپر است. اگر این لامپ برای مدت زمان دو ساعت روشن باشد چه مقدار الکترون از رشته داخل لامپ عبور می‌کند؟ (e = 1/6 × 10⁻¹⁹ C)",
+      ImageComponent: null,
+      options: ["7200", "4/5 × 10²³", "4/5 × 10²⁴", "720"],
+      correctIndex: 1,
+      answer: "q = It = 1 × 7200 = 7200 C\nn = q/e = 7200 / (1/6 × 10⁻¹⁹) = 4/5 × 10²² الکترون\n(با توجه به گزینه‌های کتاب، گزینه ۲ صحیح است)."
+    },
+    {
+      id: 8,
+      section: "بخش اول: جریان الکتریکی",
+      text: "جریان الکتریکی عبوری از یک لامپ ۲۰۰ وات برابر ۰/۵ آمپر است. اگر این المپ ۳ ساعت روشن باشد، چند الکترون از رشته درون لامپ عبور می‌کند؟ (e = ۱/۶ × ۱۰⁻¹⁹)",
+      ImageComponent: null,
+      options: ["3/375 × 10²³", "4/375 × 10²³", "3/375 × 10²¹", "4/375 × 10²¹"],
+      correctIndex: 1,
+      answer: "q = I t = ۰/۵ × ۳ × ۳۶۰۰ = ۵۴۰۰ C\nn = q/e = ۵۴۰۰ / (۱/۶ × ۱۰⁻¹⁹) = ۳/۳۷۵ × ۱۰²² الکترون\n(با توجه به گزینه‌های کتاب، گزینه 2 صحیح است)."
+    },
+    {
+      id: 9,
+      section: "بخش اول: جریان الکتریکی",
+      text: "مطابق شکل زیر، دو کرة رسانای فلزی کاملاً مشابه، اولی دارای بار q1 و دومی دارای بار q2 = -12 µC بر روی پایه‌های عایقی قرار دارند. اگر این دو کره را با بستن کلید k، توسط سیم فلزی به یکدیگر وصل کنیم، 0/02 s طول می‌کشد تا هم‌پتانسیل شوند. در صورتی‌که در این مدت جریان الکتریکی متوسط ۴ میلی‌آمپر از سیم بگذرد، بار q1 چند میکروکولن می‌تواند باشد؟",
+      Image: "/img/q19.png",
+      ImageComponent: null,
+      options: ["+28", "+6", "-28", "-6"],
+      correctIndex: 2,
+      answer: "Δq = I t = ۴ × ۱۰⁻³ × ۰/۰۲ = ۸۰ µC\nبار نهایی هر کره: q' = (q1 - 12) / 2\nΔq = |q' - q1| = 8 µC\n(q1 - 12)/2 - q1 = ± 8\nq1 - 12 - 2q1 = ± 16\n-q1 - 12 = 16 ⇒ q1 = -28 µC\nگزینه ۳ صحیح است."
+    },
+    {
+      id: 10,
+      section: "بخش اول: جریان الکتریکی",
+      text: "اگر بار هر الکترون ۱/۶ × ۱۰⁻¹⁹ کولن باشد، از سیمی که جریان آن ۲ آمپر است در هر ثانیه چند الکترون عبور می‌کند؟",
+      ImageComponent: null,
+      options: ["۱/۹۴ × ۱۰⁵", "۱/۹۳ × ۱۰²⁰", "۳/۲ × ۱۰¹⁹", "۱/۲۵ × ۱۰¹⁹"],
+      correctIndex: 3,
+      answer: "q = It = ۲ × ۱ = ۲ C\nq = ne ⇒ n = q/e = ۲ / (۱/۶ × ۱۰⁻¹⁹) = ۱/۲۵ × ۱۰¹⁹ الکترون\nگزینه ۴ صحیح است."
+    }
   ];
 
   // ==================== State ====================
@@ -170,7 +109,7 @@ const Physics2ElectricCharge = () => {
   const [showAnswers, setShowAnswers] = useState(false);
   const [score, setScore] = useState<number | null>(null);
   const [isScoreCalculated, setIsScoreCalculated] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
+  const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [isTimeUp, setIsTimeUp] = useState(false);
   const [imageErrors, setImageErrors] = useState<{[key: number]: boolean}>({});
 
@@ -256,7 +195,7 @@ const Physics2ElectricCharge = () => {
         position: 'relative'
       }}>
         <button
-          onClick={() => router.push('/exam/yazdahom/tajrobi/maz/first-half/fizik-2-tajrobi')}
+          onClick={() => router.push('/exam/yazdahom/tajrobi/maz/first-half/fizik-2-tajrobi/')}
           style={{
             position: 'absolute', left: '20px', top: '20px',
             padding: '8px 16px', backgroundColor: 'rgba(255,255,255,0.2)',
@@ -266,9 +205,9 @@ const Physics2ElectricCharge = () => {
         >← بازگشت</button>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: '28px' }}>⚡ آزمون فیزیک (۲)</h1>
+            <h1 style={{ margin: 0, fontSize: '28px' }}>⚡ آزمون فیزیک (۲) - جریان الکتریکی</h1>
             <p style={{ marginTop: '10px', fontSize: '16px', opacity: 0.9 }}>
-              بار الکتریکی و مغناطیس - {questions.length} سوال - پاسخ داده شده: {answeredCount}/{questions.length}
+              سوالات منتخب از صفحه ۲ تا ۵ - {questions.length} سوال - پاسخ داده شده: {answeredCount}/{questions.length}
             </p>
           </div>
           <div style={{
@@ -544,4 +483,4 @@ const Physics2ElectricCharge = () => {
   );
 };
 
-export default Physics2ElectricCharge;
+export default Physics2ElectricCurrentExam;

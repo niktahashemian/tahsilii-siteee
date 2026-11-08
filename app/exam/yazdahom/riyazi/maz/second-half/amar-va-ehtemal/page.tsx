@@ -25,75 +25,58 @@ export default function AmarVaEhtemalChaptersPage() {
   const router = useRouter();
   const [openChapter, setOpenChapter] = useState<number | null>(null);
 
+  // ساختار بر اساس فهرست کتاب آمار و احتمال (۲) یازدهم ریاضی
   const chapters: Chapter[] = [
-    {
-      id: 1,
-      name: 'فصل اول: مبانی آمار',
-      icon: '📊',
-      color: '#2196F3',
-      examSlug: 'chapter1-exam',
-      examName: 'آزمون جامع فصل اول: مبانی آمار',
-      examQuestionCount: 25,
-      lessons: [
-        { id: 1, name: 'درس ۱-۱: جامعه و نمونه', description: 'مفهوم جامعه، نمونه، نمونه‌گیری و کاربردها', questionCount: 10, slug: 'lesson1' },
-        { id: 2, name: 'درس ۱-۲: متغیرهای آماری', description: 'متغیرهای کمی و کیفی، متغیرهای گسسته و پیوسته', questionCount: 10, slug: 'lesson2' },
-        { id: 3, name: 'درس ۱-۳: جدول توزیع فراوانی', description: 'جدول فراوانی، فراوانی نسبی و درصدی، فراوانی تجمعی', questionCount: 12, slug: 'lesson3' },
-      ]
-    },
+    
     {
       id: 2,
-      name: 'فصل دوم: نمایش داده‌ها',
-      icon: '📈',
-      color: '#4CAF50',
+      name: 'فصل دوم: احتمال',
+      icon: '🎲',
+      color: '#FF9800',
       examSlug: 'chapter2-exam',
-      examName: 'آزمون جامع فصل دوم: نمایش داده‌ها',
+      examName: 'آزمون جامع فصل دوم: احتمال',
       examQuestionCount: 28,
       lessons: [
-        { id: 4, name: 'درس ۲-۱: نمودارهای آماری', description: 'نمودار میله‌ای، دایره‌ای، ستونی و خطی', questionCount: 12, slug: 'lesson4' },
-        { id: 5, name: 'درس ۲-۲: نمودار جعبه‌ای (باکس پلات)', description: 'رسم و تفسیر نمودار جعبه‌ای، چارک‌ها و دامنه چارکی', questionCount: 10, slug: 'lesson5' },
-        { id: 6, name: 'درس ۲-۳: نمودار ساقه و برگ', description: 'رسم و تفسیر نمودار ساقه و برگ، مرتب‌سازی داده‌ها', questionCount: 8, slug: 'lesson6' },
+        { id: 7, name: 'درس ۲-۴: پیشامدهای مستقل و وابسته', description: 'قانون ضرب احتمال، قانون احتمال کل، قانون بیز، پیشامدهای مستقل و وابسته، انتخاب‌های با جایگذاری و بدون جایگذاری', questionCount: 15, slug: 'independent-events' },
       ]
     },
     {
       id: 3,
-      name: 'فصل سوم: شاخص‌های مرکزی و پراکندگی',
-      icon: '📐',
-      color: '#FF9800',
+      name: 'فصل سوم: آمار توصیفی',
+      icon: '📊',
+      color: '#4CAF50',
       examSlug: 'chapter3-exam',
-      examName: 'آزمون جامع فصل سوم: شاخص‌های مرکزی و پراکندگی',
+      examName: 'آزمون جامع فصل سوم: آمار توصیفی',
       examQuestionCount: 30,
       lessons: [
-        { id: 7, name: 'درس ۳-۱: میانگین و میانه', description: 'محاسبه میانگین و میانه، ویژگی‌ها و کاربردها', questionCount: 12, slug: 'lesson7' },
-        { id: 8, name: 'درس ۳-۲: مد و چارک‌ها', description: 'محاسبه مد، چارک اول، دوم و سوم، دامنه تغییرات', questionCount: 10, slug: 'lesson8' },
-        { id: 9, name: 'درس ۳-۳: واریانس و انحراف معیار', description: 'محاسبه واریانس و انحراف معیار، ویژگی‌ها و کاربردها', questionCount: 15, slug: 'lesson9' },
-        { id: 10, name: 'درس ۳-۴: ضریب تغییرات', description: 'محاسبه ضریب تغییرات، مقایسه پراکندگی دو جامعه', questionCount: 8, slug: 'lesson10' },
+        { id: 8, name: 'درس ۳-۱: توصیف و نمایش داده‌ها', description: 'جدول‌های فراوانی، نمودارهای میله‌ای، دایره‌ای، ساقه و برگ و جعبه‌ای', questionCount: 10, slug: 'data-representation' },
+        { id: 9, name: 'درس ۳-۲: معیارهای گرایش به مرکز', description: 'میانگین داده‌ها، میانه داده‌ها، مد (نما) داده‌ها، میانگین، میانه و مد داده‌ها؛ کدام معیار را انتخاب می‌کنید؟', questionCount: 12, slug: 'central-tendency' },
+        { id: 10, name: 'درس ۳-۳: معیارهای پراکندگی', description: 'انحراف معیار و واریانس داده‌ها، ضریب تغییرات داده‌ها، نمودار جعبه‌ای', questionCount: 15, slug: 'dispersion' },
       ]
     },
     {
       id: 4,
-      name: 'فصل چهارم: مبانی احتمال',
-      icon: '🎲',
-      color: '#F44336',
+      name: 'فصل چهارم: آمار استنباطی',
+      icon: '📈',
+      color: '#9C27B0',
       examSlug: 'chapter4-exam',
-      examName: 'آزمون جامع فصل چهارم: مبانی احتمال',
-      examQuestionCount: 32,
+      examName: 'آزمون جامع فصل چهارم: آمار استنباطی',
+      examQuestionCount: 20,
       lessons: [
-        { id: 11, name: 'درس ۴-۱: فضای نمونه و پیشامد', description: 'فضای نمونه، پیشامد، پیشامد ساده و مرکب', questionCount: 12, slug: 'lesson11' },
-        { id: 12, name: 'درس ۴-۲: احتمال کلاسیک', description: 'محاسبه احتمال، قضایای احتمال، احتمال رخ ندادن', questionCount: 15, slug: 'lesson12' },
-        { id: 13, name: 'درس ۴-۳: احتمال شرطی', description: 'احتمال شرطی، پیشامدهای مستقل و وابسته', questionCount: 10, slug: 'lesson13' },
-        { id: 14, name: 'درس ۴-۴: قانون جمع و ضرب احتمال', description: 'قانون جمع، قانون ضرب، پیشامدهای ناسازگار', questionCount: 10, slug: 'lesson14' },
+        { id: 11, name: 'درس ۴-۱: گردآوری داده‌ها', description: 'روش‌های نمونه‌گیری، انواع خطاها در گردآوری داده‌ها', questionCount: 10, slug: 'data-collection' },
+        { id: 12, name: 'درس ۴-۲: برآورد', description: 'برآورد نقطه‌ای و فاصله‌ای، برآورد میانگین جامعه', questionCount: 12, slug: 'estimation' },
       ]
     },
     {
       id: 5,
-      name: '🏆 آزمون جامع کل کتاب آمار و احتمال (2)',
+      name: '🏆 آزمون جامع کل کتاب آمار و احتمال (۲)',
       icon: '🏆',
       color: '#FF6B6B',
       examSlug: 'final-exam',
-      examName: 'آزمون جامع کل کتاب آمار و احتمال (2)',
+      examName: 'آزمون جامع کل کتاب آمار و احتمال (۲)',
       examQuestionCount: 50,
       lessons: [
-        { id: 15, name: '📚 کل دروس کتاب آمار و احتمال (2)', description: 'شامل تمام مباحث: مبانی آمار، نمایش داده‌ها، شاخص‌های مرکزی و پراکندگی، مبانی احتمال', questionCount: 50, slug: 'final-exam' },
+        { id: 13, name: '📚 کل دروس کتاب آمار و احتمال (۲)', description: 'شامل تمام مباحث: مبانی ریاضیات، احتمال، آمار توصیفی و آمار استنباطی', questionCount: 50, slug: 'final-exam' },
       ]
     }
   ];
@@ -116,7 +99,7 @@ export default function AmarVaEhtemalChaptersPage() {
         <button onClick={() => router.push('/exam/yazdahom/riyazi/maz/second-half')} style={styles.backButton}>
           ← بازگشت به لیست دروس
         </button>
-        <h1 style={styles.title}>📊 آمار و احتمال (2) - پایه یازدهم ریاضی </h1>
+        <h1 style={styles.title}>📊 آمار و احتمال (۲) - پایه یازدهم ریاضی </h1>
         <p style={styles.subtitle}>برای شروع، روی هر فصل کلیک کنید و سپس درس یا آزمون جامع مورد نظر را انتخاب نمایید</p>
       </div>
 

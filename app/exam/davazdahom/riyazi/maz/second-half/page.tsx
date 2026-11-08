@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 interface Lesson {
@@ -12,144 +12,75 @@ interface Lesson {
   questionCount: number;
 }
 
-export default function SecondHalfLessonsPage() {
-  const params = useParams();
+export default function FirstHalfLessonsPage() {
   const router = useRouter();
-  const grade = params.grade as string;
-  const field = params.field as string;
-  const exam = params.exam as string;
-  const semester = params.semester as string;
 
-  // دریافت نام فارسی پایه
-  const getGradeName = (gradePath: string): string => {
-    const gradeMap: Record<string, string> = {
-      'dahom': 'دهم',
-      'yazdahom': 'یازدهم',
-      'davazdahom': 'دوازدهم'
-    };
-    return gradeMap[gradePath] || gradePath;
-  };
-
-  // دریافت نام فارسی رشته
-  const getFieldName = (fieldPath: string): string => {
-    const fieldMap: Record<string, string> = {
-      'ensani': 'انسانی',
-      'riyazi': 'ریاضی',
-      'tajrobi': 'تجربی'
-    };
-    return fieldMap[fieldPath] || fieldPath;
-  };
-
-  // دریافت نام فارسی آزمون
-  const getExamName = (examPath: string): string => {
-    const examMap: Record<string, string> = {
-      'maz': 'قلمچی',
-      'gozine2': 'گزینه دو',
-      'sanjesh': 'سنجش'
-    };
-    return examMap[examPath] || examPath;
-  };
-
-  // دریافت نام فارسی نیم سال
-  const getSemesterName = (semesterPath: string): string => {
-    const semesterMap: Record<string, string> = {
-      'first-half': 'نیم سال اول',
-      'second-half': 'نیم سال دوم'
-    };
-    return semesterMap[semesterPath] || semesterPath;
-  };
-
-  // ======================== لیست دروس نیم سال دوم دوازدهم ریاضی قلمچی ========================
+  // ======================== لیست دروس دوازدهم ریاضی - قلمچی - نیم سال دوم ========================
   const lessons: Lesson[] = [
-    { 
-      id: 1, 
-      name: 'ریاضیات گسسته', 
-      icon: '🧮', 
-      color: '#353e60ff', 
-      description: 'منطق و استدلال ریاضی، نظریه اعداد، ترکیبیات، گراف و درخت',
-      questionCount: 30
+    {
+      id: 1,
+      name: 'حسابان ۲',
+      icon: '∫',
+      color: '#a991ad',
+      description: 'حد و پیوستگی، مشتق، کاربرد مشتق',
+      questionCount: 10,
     },
-    { 
-      id: 2, 
-      name: 'فیزیک (3)', 
-      icon: '⚡', 
-      color: '#d07781ff', 
-      description: 'الکتریسیته، مغناطیس، دینامیک',
-      questionCount: 30
+    {
+      id: 2,
+      name: 'هندسه ۳',
+      icon: '🔺',
+      color: '#4CAF50',
+      description: 'استدلال، فضای هندسی، تشابه',
+      questionCount: 8,
     },
-    { 
-      id: 3, 
-      name: 'شیمی (3)', 
-      icon: '🧪', 
-      color: '#00BCD4', 
-      description: 'تعادل شیمیایی، اسید و باز، هیدروکربن‌ها',
-      questionCount: 30
+    {
+      id: 3,
+      name: 'ریاضیات گسسته',
+      icon: '🔢',
+      color: '#353e60',
+      description: 'گراف، ترکیبیات، نظریه اعداد',
+      questionCount: 10,
     },
-    { 
-      id: 4, 
-      name: 'هندسه (3)', 
-      icon: '🔺', 
-      color: '#4CAF50', 
-      description: 'ماتریس و کاربردها، دستگاه معادلات خطی، بردارها و مقاطع مخروطی',
-      questionCount: 25
+    {
+      id: 4,
+      name: 'آمار و احتمال (بخش دوازدهم)',
+      icon: '📊',
+      color: '#FF9800',
+      description: 'احتمال، توزیع‌های احتمال و آمار',
+      questionCount: 8,
     },
-    { 
-      id: 5, 
-      name: 'حسابان (2)', 
-      icon: '∫', 
-      color: '#a991adff', 
-      description: 'حد و پیوستگی، مشتق و کاربردهای آن',
-      questionCount: 30
+    {
+      id: 5,
+      name: 'فیزیک ۳',
+      icon: '⚡',
+      color: '#d07781',
+      description: 'الکتریسیته، مغناطیس، موج',
+      questionCount: 10,
     },
-    { 
-      id: 6, 
-      name: 'فارسی (3)', 
-      icon: '📖', 
-      color: '#9C27B0', 
-      description: 'ادبیات فارسی پایه دوازدهم، آرایه‌ها و سبک‌شناسی',
-      questionCount: 25
+    {
+      id: 6,
+      name: 'شیمی ۳',
+      icon: '🧪',
+      color: '#00BCD4',
+      description: 'ترموشیمی، سینتیک، شیمی آلی',
+      questionCount: 10,
     },
-    { 
-      id: 7, 
-      name: 'عربی (3)', 
-      icon: '🕌', 
-      color: '#2196F3', 
-      description: 'عربی، زبان قرآن پایه دوازدهم، قواعد و ترجمه',
-      questionCount: 25
-    },
-    { 
-      id: 8, 
-      name: 'دین و زندگی (3)', 
-      icon: '🕌', 
-      color: '#FF9800', 
-      description: 'دینی پایه دوازدهم، انسان و ایمان، خداشناسی و معاد',
-      questionCount: 25
-    },
-    { 
-      id: 9, 
-      name: 'زبان انگلیسی (3)', 
-      icon: '🇬🇧', 
-      color: '#F44336', 
-      description: 'زبان عمومی پایه دوازدهم، گرامر و واژگان',
-      questionCount: 25
-    }
   ];
 
+  // نگاشت نام درس به slug
   const getLessonSlug = (lessonName: string): string => {
     const slugMap: Record<string, string> = {
+      'حسابان ۲': 'hesaban-2-riyazi',
+      'هندسه ۳': 'hendese-3-riyazi',
       'ریاضیات گسسته': 'gosaste-riyazi',
-      'فیزیک (3)': 'fizik-3-riyazi',
-      'شیمی (3)': 'shimi-3-riyazi',
-      'هندسه (3)': 'hendese-3-riyazi',
-      'حسابان (2)': 'hesaban-2-riyazi',
-      'فارسی (3)': 'farsi-3-riyazi',
-      'عربی (3)': 'arabi-3-riyazi',
-      'دین و زندگی (3)': 'din-va-zendegi-3-riyazi',
-      'زبان انگلیسی (3)': 'english-3-riyazi'
+      'آمار و احتمال (بخش دوازدهم)': 'amar-va-ehtemal-12',
+      'فیزیک ۳': 'fizik-3-riyazi',
+      'شیمی ۳': 'shimi-3-riyazi',
     };
     return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
   };
 
+  // مسیر ثابت برای دوازدهم ریاضی - قلمچی - نیم سال دوم
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
     router.push(`/exam/davazdahom/riyazi/maz/second-half/${lessonSlug}`);
@@ -161,11 +92,9 @@ export default function SecondHalfLessonsPage() {
         <Link href="/" className="back-to-home">
           ← بازگشت به صفحه اصلی
         </Link>
-        <h1 className="exam-title">
-          📚 {getExamName(exam)} - {getGradeName(grade)} {getFieldName(field)}
-        </h1>
+        <h1 className="exam-title">📚 قلمچی - دوازدهم ریاضی</h1>
         <p className="exam-subtitle">
-          {getSemesterName(semester)} - درس مورد نظر خود را انتخاب کنید:
+          نیم سال دوم - درس مورد نظر خود را انتخاب کنید:
         </p>
       </div>
 
@@ -182,7 +111,6 @@ export default function SecondHalfLessonsPage() {
             <p className="lesson-description">{lesson.description}</p>
             <div className="lesson-stats">
               <span className="question-count">📝 {lesson.questionCount} سوال</span>
-              <span className="duration-badge">⏱️ {Math.floor(lesson.questionCount * 1.5)} دقیقه</span>
             </div>
             <div className="lesson-button" style={{ backgroundColor: lesson.color }}>
               شروع آزمون {lesson.name}
@@ -192,175 +120,172 @@ export default function SecondHalfLessonsPage() {
       </div>
 
       <div className="info-box">
-        <p>💡 هر آزمون شامل سوالات تخصصی نیم سال دوم {getGradeName(grade)} {getFieldName(field)} می‌باشد.</p>
-        <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
-        <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس می‌باشند.</p>
-        <p>📚 این آزمون‌ها مطابق با کتاب‌های درسی پایه دوازدهم رشته ریاضی طراحی شده‌اند.</p>
+        <p>💡 هر آزمون شامل سوالات تخصصی نیم سال دوم دوازدهم ریاضی می‌باشد.</p>
+        <p>📊 پس از اتمام آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
       </div>
 
-      <style>{`
+      <style jsx>{`
         .exam-lessons-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 20px;
-          direction: rtl;
-          font-family: 'Tahoma', 'Arial', sans-serif;
+          min-height: 100vh;
+          padding: 2rem;
+          font-family: 'IranSans', Tahoma, sans-serif;
+          background: #f0f4f8;
         }
-
         .exam-header {
-          color: white;
-          padding: 30px 40px;
-          border-radius: 16px;
-          margin-bottom: 30px;
           text-align: center;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+          margin-bottom: 2rem;
         }
-
         .back-to-home {
           display: inline-block;
-          color: rgba(11, 11, 11, 0.8);
-          text-decoration: none;
-          font-size: 14px;
-          margin-bottom: 15px;
-          transition: color 0.3s;
-        }
-
-        .back-to-home:hover {
+          background: #4a5568;
           color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          margin-bottom: 1rem;
+          font-size: 0.9rem;
+          transition: background 0.3s;
         }
-
+        .back-to-home:hover {
+          background: #2d3748;
+        }
         .exam-title {
-          font-size: 28px;
-          margin: 10px 0;
-          font-weight: bold;
+          font-size: 2rem;
+          color: #1a202c;
+          margin: 0.5rem 0;
         }
-
         .exam-subtitle {
-          font-size: 16px;
-          opacity: 0.9;
-          margin: 0;
+          color: #4a5568;
+          font-size: 1rem;
         }
-
         .lessons-grid {
+          max-width: 1400px;
+          margin: 0 auto;
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-          gap: 20px;
-          margin-bottom: 30px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
         }
-
         .lesson-card {
           background: white;
-          border-radius: 16px;
-          padding: 24px;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-          transition: all 0.3s ease;
-          text-align: center;
+          border-radius: 1rem;
+          padding: 1.5rem;
           cursor: pointer;
-          border: 1px solid #e9ecef;
-        }
-
-        .lesson-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        .lesson-card:hover .lesson-button {
-          transform: scale(1.05);
-        }
-
-        .lesson-icon {
-          font-size: 42px;
-          margin-bottom: 12px;
-          display: block;
-        }
-
-        .lesson-name {
-          font-size: 18px;
-          font-weight: bold;
-          color: #1a237e;
-          margin: 10px 0 8px;
-        }
-
-        .lesson-description {
-          font-size: 13px;
-          color: #666;
-          margin: 8px 0 12px;
-          line-height: 1.6;
-          min-height: 40px;
-        }
-
-        .lesson-stats {
+          transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           display: flex;
-          justify-content: center;
-          gap: 12px;
-          margin: 12px 0;
-          flex-wrap: wrap;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
-
+        .lesson-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .lesson-icon {
+          font-size: 2.5rem;
+          margin-bottom: 0.5rem;
+        }
+        .lesson-name {
+          font-size: 1.1rem;
+          font-weight: bold;
+          margin: 0.5rem 0;
+          color: #2d3748;
+        }
+        .lesson-description {
+          font-size: 0.8rem;
+          color: #718096;
+          margin: 0.5rem 0;
+          line-height: 1.4;
+          flex: 1;
+        }
+        .lesson-stats {
+          margin: 0.5rem 0;
+        }
         .question-count {
-          background: #f0f0f0;
-          padding: 4px 14px;
-          border-radius: 20px;
-          font-size: 12px;
-          color: #555;
+          background: #edf2f7;
+          padding: 0.2rem 0.6rem;
+          border-radius: 1rem;
+          font-size: 0.7rem;
+          color: #4a5568;
         }
-
-        .duration-badge {
-          background: #e3f2fd;
-          padding: 4px 14px;
-          border-radius: 20px;
-          font-size: 12px;
-          color: #1565c0;
-        }
-
         .lesson-button {
           display: inline-block;
-          padding: 10px 24px;
-          border-radius: 30px;
+          padding: 0.4rem 1rem;
+          border-radius: 2rem;
           color: white;
-          font-size: 14px;
+          font-size: 0.8rem;
           font-weight: bold;
-          transition: all 0.3s ease;
-          border: none;
-          margin-top: 8px;
+          text-align: center;
+          transition: opacity 0.2s;
+          margin-top: 0.5rem;
+          width: 100%;
         }
-
+        .lesson-button:hover {
+          opacity: 0.9;
+        }
         .info-box {
           background: white;
-          border-radius: 16px;
-          padding: 24px;
-          max-width: 700px;
-          margin: 0 auto;
+          border-radius: 1rem;
+          padding: 1rem;
+          margin-top: 2rem;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
           text-align: center;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-          border: 1px solid #e9ecef;
+          color: #4a5568;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .info-box p {
-          margin: 8px 0;
-          color: #555;
-          font-size: 14px;
+        @media (max-width: 1200px) {
+          .lessons-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
         }
 
-        @media (max-width: 768px) {
-          .exam-header {
-            padding: 20px;
+        @media (max-width: 992px) {
+          .lessons-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
-          
-          .exam-title {
-            font-size: 20px;
+        }
+
+        @media (max-width: 576px) {
+          .exam-lessons-container {
+            padding: 1rem;
           }
-          
           .lessons-grid {
             grid-template-columns: 1fr;
+            gap: 1rem;
           }
-          
+          .exam-title {
+            font-size: 1.3rem;
+          }
           .lesson-card {
-            padding: 18px;
+            padding: 1rem;
           }
+        }
 
+        @media (max-width: 400px) {
+          .exam-lessons-container {
+            padding: 0.5rem;
+          }
+          .lessons-grid {
+            gap: 0.8rem;
+          }
+          .lesson-card {
+            padding: 0.8rem;
+          }
+          .lesson-icon {
+            font-size: 2rem;
+          }
+          .lesson-name {
+            font-size: 0.95rem;
+          }
           .lesson-description {
-            min-height: auto;
+            font-size: 0.7rem;
+          }
+          .lesson-button {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
           }
         }
       `}</style>

@@ -87,14 +87,6 @@ export default function LessonsPage() {
     },
     {
       id: 4,
-      name: 'ریاضی (2)',
-      icon: '📐',
-      color: '#F44336',
-      description: 'مثلثات، ماتریس، احتمال، حد و مشتق',
-      questionCount: 8,
-    },
-    {
-      id: 5,
       name: 'زمین‌شناسی',
       icon: '🌍',
       color: '#795548',
@@ -102,37 +94,13 @@ export default function LessonsPage() {
       questionCount: 8,
     },
     {
-      id: 6,
-      name: 'فارسی (2)',
-      icon: '📝',
-      color: '#FF9800',
-      description: 'ادبیات فارسی، آرایه‌ها، دستور زبان',
+      id: 5,
+      name: 'ریاضی (2)',
+      icon: '📐',
+      color: '#F44336',
+      description: 'مثلثات، ماتریس، احتمال، حد و مشتق',
       questionCount: 8,
     },
-    {
-      id: 7,
-      name: 'عربی (2)',
-      icon: '📜',
-      color: '#795548',
-      description: 'قواعد عربی، ترجمه، متون قرآنی',
-      questionCount: 8,
-    },
-    {
-      id: 8,
-      name: 'دین و زندگی (2)',
-      icon: '🕌',
-      color: '#E91E63',
-      description: 'آموزه‌های دینی، اخلاق، احکام',
-      questionCount: 8,
-    },
-    {
-      id: 9,
-      name: 'زبان انگلیسی (2)',
-      icon: '🇬🇧',
-      color: '#3F51B5',
-      description: 'گرامر، واژگان، درک مطلب، نگارش',
-      questionCount: 8,
-    }
   ];
 
   // ======================== نگاشت نام درس به slug ========================
@@ -235,17 +203,20 @@ export default function LessonsPage() {
         .lessons-grid {
           max-width: 1200px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           gap: 1.5rem;
         }
         .lesson-card {
+          width: calc((100% - 3rem) / 3);
           background: white;
           border-radius: 1rem;
           padding: 1.5rem;
           cursor: pointer;
           transition: transform 0.2s, box-shadow 0.2s;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-sizing: border-box;
         }
         .lesson-card:hover {
           transform: translateY(-5px);
@@ -311,8 +282,8 @@ export default function LessonsPage() {
           .exam-title {
             font-size: 1.5rem;
           }
-          .lessons-grid {
-            grid-template-columns: 1fr;
+          .lesson-card {
+            width: 100%;
           }
         }
       `}</style>

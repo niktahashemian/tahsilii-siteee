@@ -12,150 +12,115 @@ interface Lesson {
   questionCount: number;
 }
 
-export default function FirstHalfLessonsPage() {
+export default function LessonsPage() {
   const params = useParams();
   const router = useRouter();
-  const grade = params.grade as string;
-  const field = params.field as string;
-  const exam = params.exam as string;
-  const semester = params.semester as string;
 
-  // دریافت نام فارسی پایه
+  const grade = params.grade as string; // 'yazdahom'
+  const field = params.field as string; // 'riyazi'
+  const exam = params.exam as string; // 'ghalamchi'
+  const semester = params.semester as string; // 'first-half'
+
+  // ======================== توابع تبدیل نام‌ها ========================
   const getGradeName = (gradePath: string): string => {
-    const gradeMap: Record<string, string> = {
-      'dahom': 'دهم',
-      'yazdahom': 'یازدهم',
-      'davazdahom': 'دوازدهم'
+    const map: Record<string, string> = {
+      dahom: 'دهم',
+      yazdahom: 'یازدهم',
+      davazdahom: 'دوازدهم',
     };
-    return gradeMap[gradePath] || gradePath;
+    return map[gradePath] || gradePath;
   };
 
-  // دریافت نام فارسی رشته
   const getFieldName = (fieldPath: string): string => {
-    const fieldMap: Record<string, string> = {
-      'ensani': 'انسانی',
-      'riyazi': 'ریاضی',
-      'tajrobi': 'تجربی'
+    const map: Record<string, string> = {
+      ensani: 'انسانی',
+      riyazi: 'ریاضی',
+      tajrobi: 'تجربی',
     };
-    return fieldMap[fieldPath] || fieldPath;
+    return map[fieldPath] || fieldPath;
   };
 
-  // دریافت نام فارسی آزمون
   const getExamName = (examPath: string): string => {
-    const examMap: Record<string, string> = {
-      'ghalamchi': 'قلمچی',
-      'maz': 'ماز',
-      'gozine2': 'گزینه دو',
-      'sanjesh': 'سنجش',
-      'kheili-sabz': 'خیلی سبز'
+    const map: Record<string, string> = {
+      ghalamchi: 'قلمچی',
+      gozine2: 'گزینه دو',
+      sanjesh: 'سنجش',
+      maz: 'ماز',
+      kheilisabz: 'خیلی سبز',
     };
-    return examMap[examPath] || examPath;
+    return map[examPath] || examPath;
   };
 
-  // دریافت نام فارسی نیم سال
   const getSemesterName = (semesterPath: string): string => {
-    const semesterMap: Record<string, string> = {
-      'first-half': 'نیم سال اول',
-      'second-half': 'نیم سال دوم'
+    const map: Record<string, string> = {
+      'first-half': 'نیم‌سال اول',
+      'second-half': 'نیم‌سال دوم',
     };
-    return semesterMap[semesterPath] || semesterPath;
+    return map[semesterPath] || semesterPath;
   };
 
-  // ======================== لیست دروس ========================
+  // ======================== لیست دروس یازدهم ریاضی ========================
   const lessons: Lesson[] = [
-    { 
-      id: 1, 
-      name: 'فیزیک (2)', 
-      icon: '⚡', 
-      color: '#FF9800', 
-      description: 'الکتریسیته، مغناطیس، دینامیک',
-      questionCount: 10
+    {
+      id: 1,
+      name: 'حسابان ۱',
+      icon: '📘',
+      color: '#3F51B5',
+      description: 'معادلات، توابع، لگاریتم و مثلثات',
+      questionCount: 10,
     },
-    { 
-      id: 2, 
-      name: 'شیمی (2)', 
-      icon: '🧪', 
-      color: '#00BCD4', 
-      description: 'تعادل شیمیایی، اسید و باز، هیدروکربن‌ها',
-      questionCount: 10
+    {
+      id: 2,
+      name: 'هندسه ۲',
+      icon: '📐',
+      color: '#F44336',
+      description: 'دایره، تبدیل‌های هندسی، تشابه و حل مسئله',
+      questionCount: 10,
     },
-    { 
-      id: 3, 
-      name: 'هندسه (2)', 
-      icon: '🔺', 
-      color: '#4CAF50', 
-      description: 'استدلال، قضایای هندسی، تشابه',
-      questionCount: 8
+    {
+      id: 3,
+      name: 'آمار و احتمال',
+      icon: '📊',
+      color: '#FF9800',
+      description: 'منطق و مجموعه، احتمال و آمار توصیفی',
+      questionCount: 10,
     },
-    { 
-      id: 4, 
-      name: 'حسابان (1)', 
-      icon: '∫', 
-      color: '#9C27B0', 
-      description: 'حد و پیوستگی',
-      questionCount: 10
+    {
+      id: 4,
+      name: 'فیزیک ۲',
+      icon: '⚛️',
+      color: '#9C27B0',
+      description: 'الکتریسیته ساکن، جریان الکتریکی، مغناطیس و القا',
+      questionCount: 10,
     },
-    { 
-      id: 5, 
-      name: 'آمار و احتمال', 
-      icon: '📊', 
-      color: '#2196F3', 
-      description: 'آمار توصیفی، نمودارها، شاخص‌ها',
-      questionCount: 8
+    {
+      id: 5,
+      name: 'شیمی ۲',
+      icon: '🧪',
+      color: '#4CAF50',
+      description: 'شیمی آلی، معدنی، ترمودینامیک و سینتیک',
+      questionCount: 10,
     },
-    { 
-      id: 6, 
-      name: 'فارسی (2)', 
-      icon: '📖', 
-      color: '#9C27B0', 
-      description: 'ادبیات فارسی پایه یازدهم',
-      questionCount: 8
-    },
-    { 
-      id: 7, 
-      name: 'عربی (2)', 
-      icon: '🕌', 
-      color: '#2196F3', 
-      description: 'عربی، زبان قرآن پایه یازدهم',
-      questionCount: 8
-    },
-    { 
-      id: 8, 
-      name: 'دین و زندگی (2)', 
-      icon: '🕌', 
-      color: '#FF9800', 
-      description: 'دینی پایه یازدهم',
-      questionCount: 8
-    },
-    { 
-      id: 9, 
-      name: 'زبان انگلیسی (2)', 
-      icon: '🇬🇧', 
-      color: '#F44336', 
-      description: 'زبان عمومی پایه یازدهم',
-      questionCount: 8
-    }
   ];
 
-  // نگاشت نام درس به slug
+  // ======================== نگاشت نام درس به slug ========================
   const getLessonSlug = (lessonName: string): string => {
+    const trimmed = lessonName.trim();
     const slugMap: Record<string, string> = {
-      'فیزیک (2)': 'fizik-2',
-      'شیمی (2)': 'shimi-2',
-      'هندسه (2)': 'hendese-2',
-      'حسابان (1)': 'hesaban-1',
+      'حسابان ۱': 'hesaban-1',
+      'هندسه ۲': 'hendese-2',
       'آمار و احتمال': 'amar-va-ehtemal',
-      'فارسی (2)': 'farsi-2',
-      'عربی (2)': 'arabi-2',
-      'دین و زندگی (2)': 'din-va-zendegi-2',
-      'زبان انگلیسی (2)': 'english-2'
+      'فیزیک ۲': 'fizik-2',
+      'شیمی ۲': 'shimi-2',
     };
-    return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
+    return slugMap[trimmed] || trimmed.replace(/ /g, '-').toLowerCase();
   };
 
+  // ======================== هندلر کلیک روی درس ========================
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
     router.push(`/exam/yazdahom/riyazi/maz/second-half/${lessonSlug}`);
+
   };
 
   return (
@@ -178,7 +143,6 @@ export default function FirstHalfLessonsPage() {
             key={lesson.id}
             className="lesson-card"
             onClick={() => handleLessonClick(lesson.name)}
-            style={{ cursor: 'pointer' }}
           >
             <div className="lesson-icon">{lesson.icon}</div>
             <h3 className="lesson-name">{lesson.name}</h3>
@@ -194,7 +158,10 @@ export default function FirstHalfLessonsPage() {
       </div>
 
       <div className="info-box">
-        <p>💡 هر آزمون شامل سوالات تخصصی {getSemesterName(semester)} {getGradeName(grade)} {getFieldName(field)} می‌باشد.</p>
+        <p>
+          💡 هر آزمون شامل سوالات تخصصی {getSemesterName(semester)} {getGradeName(grade)}{' '}
+          {getFieldName(field)} می‌باشد.
+        </p>
         <p>📊 پس از اتمام آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
       </div>
 
@@ -202,8 +169,9 @@ export default function FirstHalfLessonsPage() {
         .exam-lessons-container {
           min-height: 100vh;
           padding: 2rem;
-          font-family: 'IranSans', Tahoma, sans-serif;
-          background: #f0f4f8;
+          background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+          direction: rtl;
+          font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .exam-header {
           text-align: center;
@@ -218,7 +186,7 @@ export default function FirstHalfLessonsPage() {
           text-decoration: none;
           margin-bottom: 1rem;
           font-size: 0.9rem;
-          transition: background 0.3s;
+          transition: background 0.2s;
         }
         .back-to-home:hover {
           background: #2d3748;
@@ -233,23 +201,22 @@ export default function FirstHalfLessonsPage() {
           font-size: 1rem;
         }
         .lessons-grid {
-          max-width: 1400px;
+          max-width: 1200px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           gap: 1.5rem;
         }
         .lesson-card {
+          width: calc((100% - 3rem) / 3);
           background: white;
           border-radius: 1rem;
           padding: 1.5rem;
           cursor: pointer;
           transition: transform 0.2s, box-shadow 0.2s;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+          box-sizing: border-box;
         }
         .lesson-card:hover {
           transform: translateY(-5px);
@@ -260,39 +227,37 @@ export default function FirstHalfLessonsPage() {
           margin-bottom: 0.5rem;
         }
         .lesson-name {
-          font-size: 1.1rem;
+          font-size: 1.25rem;
           font-weight: bold;
           margin: 0.5rem 0;
           color: #2d3748;
         }
         .lesson-description {
-          font-size: 0.8rem;
+          font-size: 0.85rem;
           color: #718096;
           margin: 0.5rem 0;
           line-height: 1.4;
-          flex: 1;
         }
         .lesson-stats {
-          margin: 0.5rem 0;
+          margin: 1rem 0;
         }
         .question-count {
           background: #edf2f7;
           padding: 0.2rem 0.6rem;
           border-radius: 1rem;
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           color: #4a5568;
         }
         .lesson-button {
           display: inline-block;
-          padding: 0.4rem 1rem;
+          padding: 0.5rem 1rem;
           border-radius: 2rem;
           color: white;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
           font-weight: bold;
           text-align: center;
           transition: opacity 0.2s;
-          margin-top: 0.5rem;
-          width: 100%;
+          border: none;
         }
         .lesson-button:hover {
           opacity: 0.9;
@@ -310,64 +275,15 @@ export default function FirstHalfLessonsPage() {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        /* ======================================== */
-        /* ریسپانسیو: 3 ستون در لپ‌تاپ، 2 ستون در تبلت، 1 ستون در موبایل */
-        /* ======================================== */
-
-        /* لپ‌تاپ و دسکتاپ کوچک (کمتر از 1200px) */
-        @media (max-width: 1200px) {
-          .lessons-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-
-        /* تبلت (کمتر از 992px) */
-        @media (max-width: 992px) {
-          .lessons-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        /* موبایل (کمتر از 576px) */
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
           .exam-lessons-container {
             padding: 1rem;
-          }
-          .lessons-grid {
-            grid-template-columns: 1fr;
-            gap: 1rem;
           }
           .exam-title {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
           }
           .lesson-card {
-            padding: 1rem;
-          }
-        }
-
-        /* موبایل خیلی کوچک (کمتر از 400px) */
-        @media (max-width: 400px) {
-          .exam-lessons-container {
-            padding: 0.5rem;
-          }
-          .lessons-grid {
-            gap: 0.8rem;
-          }
-          .lesson-card {
-            padding: 0.8rem;
-          }
-          .lesson-icon {
-            font-size: 2rem;
-          }
-          .lesson-name {
-            font-size: 0.95rem;
-          }
-          .lesson-description {
-            font-size: 0.7rem;
-          }
-          .lesson-button {
-            font-size: 0.7rem;
-            padding: 0.3rem 0.8rem;
+            width: 100%;
           }
         }
       `}</style>

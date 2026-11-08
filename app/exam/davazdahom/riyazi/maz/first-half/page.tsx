@@ -17,92 +17,65 @@ export default function FirstHalfLessonsPage() {
 
   // ======================== لیست دروس دوازدهم ریاضی - قلمچی - نیم سال دوم ========================
   const lessons: Lesson[] = [
-    { 
-      id: 1, 
-      name: 'ریاضیات گسسته', 
-      icon: '🔢', 
-      color: '#353e60', 
-      description: 'گراف، ترکیبیات، نظریه اعداد',
-      questionCount: 10
-    },
-    { 
-      id: 2, 
-      name: 'فیزیک (3)', 
-      icon: '⚡', 
-      color: '#d07781', 
-      description: 'الکتریسیته، مغناطیس، موج',
-      questionCount: 10
-    },
-    { 
-      id: 3, 
-      name: 'شیمی (3)', 
-      icon: '🧪', 
-      color: '#00BCD4', 
-      description: 'ترموشیمی، سینتیک، شیمی آلی',
-      questionCount: 10
-    },
-    { 
-      id: 4, 
-      name: 'هندسه (3)', 
-      icon: '🔺', 
-      color: '#4CAF50', 
-      description: 'استدلال، فضای هندسی، تشابه',
-      questionCount: 8
-    },
-    { 
-      id: 5, 
-      name: 'حسابان (2)', 
-      icon: '∫', 
-      color: '#a991ad', 
+    {
+      id: 1,
+      name: 'حسابان ۲',
+      icon: '∫',
+      color: '#a991ad',
       description: 'حد و پیوستگی، مشتق، کاربرد مشتق',
-      questionCount: 10
+      questionCount: 10,
     },
-    { 
-      id: 6, 
-      name: 'فارسی (3)', 
-      icon: '📖', 
-      color: '#9C27B0', 
-      description: 'ادبیات فارسی پایه دوازدهم',
-      questionCount: 8
+    {
+      id: 2,
+      name: 'هندسه ۳',
+      icon: '🔺',
+      color: '#4CAF50',
+      description: 'استدلال، فضای هندسی، تشابه',
+      questionCount: 8,
     },
-    { 
-      id: 7, 
-      name: 'عربی (3)', 
-      icon: '🕌', 
-      color: '#2196F3', 
-      description: 'عربی، زبان قرآن پایه دوازدهم',
-      questionCount: 8
+    {
+      id: 3,
+      name: 'ریاضیات گسسته',
+      icon: '🔢',
+      color: '#353e60',
+      description: 'گراف، ترکیبیات، نظریه اعداد',
+      questionCount: 10,
     },
-    { 
-      id: 8, 
-      name: 'دین و زندگی (3)', 
-      icon: '🕌', 
-      color: '#FF9800', 
-      description: 'دینی پایه دوازدهم',
-      questionCount: 8
+    {
+      id: 4,
+      name: 'آمار و احتمال (بخش دوازدهم)',
+      icon: '📊',
+      color: '#FF9800',
+      description: 'احتمال، توزیع‌های احتمال و آمار',
+      questionCount: 8,
     },
-    { 
-      id: 9, 
-      name: 'زبان انگلیسی (3)', 
-      icon: '🇬🇧', 
-      color: '#F44336', 
-      description: 'زبان عمومی پایه دوازدهم',
-      questionCount: 8
-    }
+    {
+      id: 5,
+      name: 'فیزیک ۳',
+      icon: '⚡',
+      color: '#d07781',
+      description: 'الکتریسیته، مغناطیس، موج',
+      questionCount: 10,
+    },
+    {
+      id: 6,
+      name: 'شیمی ۳',
+      icon: '🧪',
+      color: '#00BCD4',
+      description: 'ترموشیمی، سینتیک، شیمی آلی',
+      questionCount: 10,
+    },
   ];
 
   // نگاشت نام درس به slug
   const getLessonSlug = (lessonName: string): string => {
     const slugMap: Record<string, string> = {
+      'حسابان ۲': 'hesaban-2-riyazi',
+      'هندسه ۳': 'hendese-3-riyazi',
       'ریاضیات گسسته': 'gosaste-riyazi',
-      'فیزیک (3)': 'fizik-3-riyazi',
-      'شیمی (3)': 'shimi-3-riyazi',
-      'هندسه (3)': 'hendese-3-riyazi',
-      'حسابان (2)': 'hesaban-2-riyazi',
-      'فارسی (3)': 'farsi-3-riyazi',
-      'عربی (3)': 'arabi-3-riyazi',
-      'دین و زندگی (3)': 'din-va-zendegi-3-riyazi',
-      'زبان انگلیسی (3)': 'english-3-riyazi'
+      'آمار و احتمال (بخش دوازدهم)': 'amar-va-ehtemal-12',
+      'فیزیک ۳': 'fizik-3-riyazi',
+      'شیمی ۳': 'shimi-3-riyazi',
     };
     return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
   };
@@ -119,9 +92,7 @@ export default function FirstHalfLessonsPage() {
         <Link href="/" className="back-to-home">
           ← بازگشت به صفحه اصلی
         </Link>
-        <h1 className="exam-title">
-          📚 قلمچی - دوازدهم ریاضی
-        </h1>
+        <h1 className="exam-title">📚 قلمچی - دوازدهم ریاضی</h1>
         <p className="exam-subtitle">
           نیم سال دوم - درس مورد نظر خود را انتخاب کنید:
         </p>

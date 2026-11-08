@@ -59,100 +59,64 @@ export default function SecondHalfLessonsPage() {
     return semesterMap[semesterPath] || semesterPath;
   };
 
-  // ======================== لیست دروس نیم سال دوم دوازدهم تجربی ========================
+  // ======================== لیست دروس نیم سال دوم دوازدهم ========================
   const lessons: Lesson[] = [
-    { 
-      id: 1, 
-      name: 'فیزیک (3) تجربی', 
-      icon: '⚡', 
-      color: '#d07781ff', 
-      description: 'الکتریسیته ساکن، جریان الکتریکی، مغناطیس و القای الکترومغناطیسی',
-      questionCount: 30
-    },
-    { 
-      id: 2, 
-      name: 'شیمی (3) تجربی', 
-      icon: '🧪', 
-      color: '#00BCD4', 
-      description: 'تعادل شیمیایی، اسید و باز، هیدروکربن‌ها و ترکیبات آلی',
-      questionCount: 30
-    },
-    { 
-      id: 3, 
-      name: 'زیست‌شناسی (3) تجربی', 
-      icon: '🧬', 
-      color: '#4CAF50', 
+    {
+      id: 1,
+      name: 'زیست‌شناسی ۳',
+      icon: '🧬',
+      color: '#4CAF50',
       description: 'تکامل، سیستم‌های بدن، علوم اعصاب و رفتار، زیست‌شناسی مولکولی',
       questionCount: 35
     },
-    { 
-      id: 4, 
-      name: 'ریاضی (3) تجربی', 
-      icon: '📐', 
-      color: '#353e60ff', 
+    {
+      id: 2,
+      name: 'شیمی ۳',
+      icon: '🧪',
+      color: '#00BCD4',
+      description: 'تعادل شیمیایی، اسید و باز، هیدروکربن‌ها و ترکیبات آلی',
+      questionCount: 30
+    },
+    {
+      id: 3,
+      name: 'فیزیک ۳',
+      icon: '⚡',
+      color: '#d07781ff',
+      description: 'الکتریسیته ساکن، جریان الکتریکی، مغناطیس و القای الکترومغناطیسی',
+      questionCount: 30
+    },
+    {
+      id: 4,
+      name: 'ریاضی ۳',
+      icon: '📐',
+      color: '#353e60ff',
       description: 'حد و پیوستگی، مشتق، کاربردهای مشتق، انتگرال و کاربردهای آن',
       questionCount: 30
     },
-    { 
-      id: 5, 
-      name: 'زمین‌شناسی', 
-      icon: '🌍', 
-      color: '#795548', 
+    {
+      id: 5,
+      name: 'زمین‌شناسی',
+      icon: '🌍',
+      color: '#795548',
       description: 'ساختار زمین، سنگ‌ها، ماگما و آتشفشان، زمین‌لرزه و منابع معدنی',
       questionCount: 20
-    },
-    { 
-      id: 6, 
-      name: 'فارسی (3) تجربی', 
-      icon: '📖', 
-      color: '#9C27B0', 
-      description: 'ادبیات فارسی پایه دوازدهم، آرایه‌ها و سبک‌شناسی',
-      questionCount: 25
-    },
-    { 
-      id: 7, 
-      name: 'عربی (3) تجربی', 
-      icon: '🕌', 
-      color: '#2196F3', 
-      description: 'عربی، زبان قرآن پایه دوازدهم، قواعد و ترجمه',
-      questionCount: 25
-    },
-    { 
-      id: 8, 
-      name: 'دین و زندگی (3) تجربی', 
-      icon: '🕌', 
-      color: '#FF9800', 
-      description: 'دینی پایه دوازدهم، انسان و ایمان، خداشناسی و معاد',
-      questionCount: 25
-    },
-    { 
-      id: 9, 
-      name: 'زبان انگلیسی (3) تجربی', 
-      icon: '🇬🇧', 
-      color: '#F44336', 
-      description: 'زبان عمومی پایه دوازدهم، گرامر و واژگان',
-      questionCount: 25
     }
   ];
 
   const getLessonSlug = (lessonName: string): string => {
     const slugMap: Record<string, string> = {
-      'فیزیک (3) تجربی': 'fizik-3-tajrobi',
-      'شیمی (3) تجربی': 'shimi-3-tajrobi',
-      'زیست‌شناسی (3) تجربی': 'zist-3-tajrobi',
-      'ریاضی (3) تجربی': 'riyazi-3-tajrobi',
-      'زمین‌شناسی': 'zamin-shenasi',
-      'فارسی (3) تجربی': 'farsi-3-tajrobi',
-      'عربی (3) تجربی': 'arabi-3-tajrobi',
-      'دین و زندگی (3) تجربی': 'din-va-zendegi-3-tajrobi',
-      'زبان انگلیسی (3) تجربی': 'english-3-tajrobi'
+      'زیست‌شناسی ۳': 'zist-3',
+      'شیمی ۳': 'shimi-3',
+      'فیزیک ۳': 'fizik-3',
+      'ریاضی ۳': 'riyazi-3',
+      'زمین‌شناسی': 'zamin-shenasi'
     };
     return slugMap[lessonName] || lessonName.replace(/ /g, '-').toLowerCase();
   };
 
   const handleLessonClick = (lessonName: string) => {
     const lessonSlug = getLessonSlug(lessonName);
-    router.push(`/exam/${grade}/${field}/${exam}/${semester}/${lessonSlug}`);
+    router.push(`/exam/davazdahom/tajrobi/maz/second-half/${lessonSlug}`);
   };
 
   return (
@@ -180,12 +144,12 @@ export default function SecondHalfLessonsPage() {
             <div className="lesson-icon">{lesson.icon}</div>
             <h3 className="lesson-name">{lesson.name}</h3>
             <p className="lesson-description">{lesson.description}</p>
-            
+
             <div className="lesson-stats">
               <span className="question-count">📝 {lesson.questionCount} سوال</span>
               <span className="duration-badge">⏱️ {Math.floor(lesson.questionCount * 1.5)} دقیقه</span>
             </div>
-            
+
             <div className="lesson-button" style={{ backgroundColor: lesson.color }}>
               شروع آزمون {lesson.name}
             </div>
@@ -197,7 +161,7 @@ export default function SecondHalfLessonsPage() {
         <p>💡 هر آزمون شامل سوالات تخصصی نیم سال دوم {getGradeName(grade)} {getFieldName(field)} می‌باشد.</p>
         <p>📊 پس از اتمام هر آزمون، درصد شما به همراه پاسخنامه تشریحی نمایش داده می‌شود.</p>
         <p>🏆 آزمون‌های جامع شامل سوالات ترکیبی از تمام دروس می‌باشند.</p>
-        <p>🔬 این آزمون‌ها مطابق با کتاب‌های درسی پایه دوازدهم رشته تجربی طراحی شده‌اند.</p>
+        <p>🔬 این آزمون‌ها مطابق با کتاب‌های درسی پایه دوازدهم طراحی شده‌اند.</p>
       </div>
 
       <style>{`
@@ -215,7 +179,7 @@ export default function SecondHalfLessonsPage() {
           border-radius: 16px;
           margin-bottom: 30px;
           text-align: center;
-          box-shadow: 0 4px 20px rgba(5, 5, 5, 0.15)15);
+          box-shadow: 0 4px 20px rgba(5, 5, 5, 0.15);
         }
 
         .back-to-home {
@@ -348,15 +312,15 @@ export default function SecondHalfLessonsPage() {
           .exam-header {
             padding: 20px;
           }
-          
+
           .exam-title {
             font-size: 20px;
           }
-          
+
           .lessons-grid {
             grid-template-columns: 1fr;
           }
-          
+
           .lesson-card {
             padding: 18px;
           }
